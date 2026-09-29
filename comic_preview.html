@@ -1,0 +1,125 @@
+comiccraft/templates/comic_preview.html
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<section class="preview-head">
+
+    <div>
+
+        <p class="eyebrow">
+            YOUR COMIC
+        </p>
+
+        <h1>
+            Comic Preview
+        </h1>
+
+        <p>
+            Review each panel before exporting
+            the finished PDF.
+        </p>
+
+    </div>
+
+
+    <a
+        class="button primary"
+        href="{{ pdf_path }}"
+        download
+    >
+        Download Your Comic as PDF
+    </a>
+
+</section>
+
+
+<div class="panels">
+
+
+{% for panel in layout %}
+
+
+<article class="panel card">
+
+
+    <div class="panel-number">
+
+        Panel {{ panel.panel_number }}
+
+    </div>
+
+
+    <h2>
+        {{ panel.title }}
+    </h2>
+
+
+    <img
+        src="{{ panel.image_path }}"
+        alt="{{ panel.title }}"
+    >
+
+
+    <p class="scene">
+
+        <em>
+            {{ panel.scene_description }}
+        </em>
+
+    </p>
+
+
+    <p>
+
+        <strong>
+            Caption:
+        </strong>
+
+        {{ panel.caption }}
+
+    </p>
+
+
+    <p>
+        {{ panel.narration }}
+    </p>
+
+
+    <details>
+
+        <summary>
+            Image prompt reference
+        </summary>
+
+        <p>
+            {{ panel.image_prompt }}
+        </p>
+
+    </details>
+
+
+</article>
+
+
+{% endfor %}
+
+
+</div>
+
+
+<div class="center">
+
+    <a
+        class="button secondary"
+        href="/"
+    >
+        Create Another Comic
+    </a>
+
+</div>
+
+
+{% endblock %}

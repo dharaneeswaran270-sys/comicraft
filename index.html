@@ -1,0 +1,184 @@
+comiccraft/templates/index.html
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<section class="hero">
+
+    <p class="eyebrow">
+        CREATE YOUR STORY
+    </p>
+
+    <h1>
+        Turn an idea into a comic.
+    </h1>
+
+    <p>
+        Describe your adventure and ComicCraft
+        will build a five-panel story,
+        illustrations, and a downloadable PDF.
+    </p>
+
+</section>
+
+
+{% if error %}
+
+<div class="alert error">
+    {{ error }}
+</div>
+
+{% endif %}
+
+
+<form
+    class="card form-card"
+    action="/generate"
+    method="post"
+    id="comic-form"
+>
+
+
+    <label>
+
+        Story Prompt
+
+        <textarea
+            name="story_prompt"
+            required
+            minlength="5"
+            maxlength="2000"
+            placeholder="A brave fox exploring an enchanted forest..."
+        ></textarea>
+
+    </label>
+
+
+    <div class="grid two">
+
+
+        <label>
+
+            Main Character Name
+
+            <input
+                name="character_name"
+                required
+                maxlength="80"
+                placeholder="Luma"
+            >
+
+        </label>
+
+
+        <label>
+
+            Setting
+
+            <select name="setting">
+
+                <option>
+                    forest
+                </option>
+
+                <option>
+                    school
+                </option>
+
+                <option>
+                    space
+                </option>
+
+                <option>
+                    city
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Story Tone
+
+            <select name="tone">
+
+                <option>
+                    light-hearted
+                </option>
+
+                <option>
+                    dramatic
+                </option>
+
+                <option>
+                    poetic
+                </option>
+
+                <option>
+                    funny
+                </option>
+
+            </select>
+
+        </label>
+
+
+        <label>
+
+            Art Style
+
+            <select name="art_style">
+
+                <option>
+                    anime
+                </option>
+
+                <option>
+                    pixel art
+                </option>
+
+                <option>
+                    comic book
+                </option>
+
+                <option>
+                    realistic
+                </option>
+
+            </select>
+
+        </label>
+
+
+    </div>
+
+
+    <button
+        class="button primary"
+        type="submit"
+        id="submit-button"
+    >
+
+        <span>
+            Create Comic
+        </span>
+
+    </button>
+
+
+</form>
+
+
+<div class="tips">
+
+    <strong>Tip:</strong>
+
+    Mention a goal, conflict, or surprising event
+    to give the story generator more material.
+
+</div>
+
+{% endblock %}
